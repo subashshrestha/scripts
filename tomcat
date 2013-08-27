@@ -1,0 +1,10 @@
+#!/bin/sh
+# Tomcat init script for Linux.
+#
+# chkconfig: 2345 96 14
+# description: The Apache Tomcat servlet/JSP container.
+
+export JAVA_HOME=/usr/lib/jvm/java-6-oracle
+
+CATALINA_HOME=/opt/app/tomcat-7.0.42 
+exec $CATALINA_HOME/bin/catalina.sh $*
