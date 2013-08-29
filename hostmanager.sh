@@ -18,7 +18,7 @@ if [ "$MINION" == "true" ]; then
                         `hostname -F /etc/hostname`
 			cd /etc/rsyslog.d
 			mv graylog2.conf.bak graylog2.conf
-			service graylog2 restart
+			service rsyslog restart
                         echo "Done";;
                 esac
         else
