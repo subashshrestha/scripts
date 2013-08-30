@@ -15,7 +15,7 @@ if [ "$MINION" == "true" ]; then
                         HOSTNAME1=`curl $HOSTNAME_RESOLVER_URI/getHostname?domain=$DOMAIN`
                         `echo "$HOSTNAME1">/etc/hostname`
                         `sed -i "s/127.0.0.1/127.0.0.1 $HOSTNAME1 /g" /etc/hosts`
-                        `hostname -F /etc/hostname`
+                        `hostname -b -F /etc/hostname`
 			cd /etc/rsyslog.d
 			mv graylog2.conf.bak graylog2.conf
 			service rsyslog restart
