@@ -16,10 +16,18 @@ if [ "$MINION" == "true" ]; then
                         `echo "$HOSTNAME1">/etc/hostname`
                         `sed -i "s/127.0.0.1/127.0.0.1 $HOSTNAME1 /g" /etc/hosts`
                         `hostname -b -F /etc/hostname`
+			echo "Hostname set to $HOSTNAME1"
+
 			cd /etc/rsyslog.d
 			mv graylog2.conf.bak graylog2.conf
 			service rsyslog restart
-                        echo "Done";;
+			echo "Restarted rsyslog"
+
+			rm /var/cache/salt/minion -rf
+			/etc/init.d/salt-minion restart
+			echo "Restarted salt-minion"
+
+                        echo "Hostmanager task complete.";;
                 esac
         else
                 echo ""
